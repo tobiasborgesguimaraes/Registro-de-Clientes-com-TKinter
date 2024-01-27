@@ -10,29 +10,11 @@ class Funções:
         self.entryNome.delete(0, END)
         self.entryTelefone.delete(0, END)
         self.entryCidade.delete(0, END)
+    
+    def criarArquivo(self):
+        f = open('Clientes.txt', 'w')
+        f.close()
 
-    def conectarDB(self):
-        self.conect = sqlite3.connect('Clientes.db')
-        self.cursor = self.conect.cursor()
-        print('Conectando ao banco de dados')
-    
-    def desconectarDB(self):
-        self.conect.close()
-        print('Desconectando o Banco de Dados')
-    
-    def montarTabelas(self):
-        self.conectarDB()
-        self.cursor.execute("""
-            CREATE TABLE IF NOT EXISTS clientes (
-                cod INTEGER PRIMARY KEY,
-                nome_cliente CHAR(64) NOT NULL, 
-                telefone INTEGER(20),
-                cidade CHAR(64)        
-            );
-        """)
-        self.conect.commit()
-        print('Banco de dados criado')
-        self.desconectarDB()
 
 
 
@@ -43,7 +25,7 @@ class Aplicação(Funções):
         self.framesDaTela()
         self.widgetsFrame1()
         self.listaFram2()
-        self.montarTabelas()
+        self.criarArquivo()
         root.mainloop()
 
     def tela(self):
