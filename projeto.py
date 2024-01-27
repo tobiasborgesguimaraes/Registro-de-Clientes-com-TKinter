@@ -15,6 +15,11 @@ class Funções:
         f = open('Clientes.txt', 'w')
         f.close()
 
+    def adicionarCliente(self):
+        # Pegar as informações das entries
+        # Adicionar essas informaçoes em Clientes.txt
+        # Limpar a tela
+        pass
 
 
 
