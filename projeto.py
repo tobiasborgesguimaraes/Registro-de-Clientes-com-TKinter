@@ -124,5 +124,5 @@ class Aplicação(Funções):
 
 
 
-
+# Este comentário só está disponível na branch myBackend
 Aplicação()
