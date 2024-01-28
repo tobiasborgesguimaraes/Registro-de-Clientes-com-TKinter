@@ -14,15 +14,16 @@ class Funções:
     
     def criarArquivo(self):
         with open('Clientes.csv', 'w') as f:
-            header = csv.DictWriter(f)
-            header.writeheader(['Codigo', 'Nome', 'Numero', 'Cidade'])
+            header = csv.writer(f)
+            header.writerow(['Codigo', 'Nome', 'Telefone', 'Cidade'])
+    
+    def novoCliente(self):
+        with open('Clientes.csv', 'a') as f:
+            writer = csv.writer(f)
+            writer.writerow([self.entryCodigo.text, self.entryNome, self.entryTelefone, self.entryCidade])
+
         
 
-    def adicionarCliente(self):
-        # Pegar as informações das entries
-        # Adicionar essas informaçoes em Clientes.txt
-        # Limpar a tela
-        pass
 
 
 
@@ -81,7 +82,7 @@ class Aplicação(Funções):
         self.buscar = Button(self.frame1, text = 'Buscar', bd= 2, bg= '#107db2', fg= 'white', font= ('verdana', 8, 'bold'))
         self.buscar.place(relx = 0.32, rely = 0.1, relwidth = 0.1, relheight = 0.15)
         
-        self.novo = Button(self.frame1, text = 'Novo', bd= 2, bg= '#107db2', fg= 'white', font= ('verdana', 8, 'bold'))
+        self.novo = Button(self.frame1, text = 'Novo', bd= 2, bg= '#107db2', fg= 'white', font= ('verdana', 8, 'bold'), command= self.novoCliente)
         self.novo.place(relx = 0.56, rely = 0.1, relwidth = 0.1, relheight = 0.15)
 
         self.alterar = Button(self.frame1, text = 'Alterar', bd= 2, bg= '#107db2', fg= 'white', font= ('verdana', 8, 'bold'))
