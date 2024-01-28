@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
-import sqlite3
+import csv
+
 
 root = Tk()
 
@@ -12,8 +13,10 @@ class Funções:
         self.entryCidade.delete(0, END)
     
     def criarArquivo(self):
-        f = open('Clientes.txt', 'w')
-        f.close()
+        with open('Clientes.csv', 'w') as f:
+            header = csv.DictWriter(f)
+            header.writeheader(['Codigo', 'Nome', 'Numero', 'Cidade'])
+        
 
     def adicionarCliente(self):
         # Pegar as informações das entries
